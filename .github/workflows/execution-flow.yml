@@ -28,4 +28,4 @@ jobs:
     needs: build
     steps:
       - name: deploy workflow
-        uses: ./.github/workflows/reusable.yml
+        uses: /home/ubuntu/git/17-github-matrix/.github/workflows/reusable.yml
