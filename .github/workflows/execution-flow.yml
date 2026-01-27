@@ -7,9 +7,6 @@ jobs:
       matrix:
         node-version: [12,13,14]
         os: [ubuntu-latest,windows-latest]
-        include:
-          - os: ubuntu-latest
-            node-version: 18
         exclude:
           - os: windows-latest
     runs-on: ${{ matrix.os }}
@@ -26,5 +23,9 @@ jobs:
       - name: build node
         run: |
           npm run build
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
       - name: deploy workflow
         uses: ./.github/workflows/reusable.yml
