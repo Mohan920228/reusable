@@ -12,7 +12,6 @@ jobs:
             node-version: 18
         exclude:
           - os: windows-latest
-            node-version: 12
     runs-on: ${{ matrix.os }}
     steps:
       - name: checkout
@@ -27,3 +26,5 @@ jobs:
       - name: build node
         run: |
           npm run build
+      - name: deploy workflow
+        uses: ./.github/workflows/reusable.yml
