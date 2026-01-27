@@ -1,8 +1,13 @@
 name: matrix-workflow
 on: push
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Build completed"
   deploy:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: deploy workflow
-        uses: /home/ubuntu/git/17-github-matrix/.github/workflows/reusable.yml
+        uses: ./.github/workflows/reusable.yml
