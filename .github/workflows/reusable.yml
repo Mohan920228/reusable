@@ -6,4 +6,4 @@ jobs:
     steps:
       - name: deploy workflow
         run: |
-          echo "deploying and uploading artifact"
+          echo "deploying and uploading artifact..."
