@@ -26,14 +26,7 @@ jobs:
           name: test-artifact
           path: dist
   deploy:
-    # needs: build
-    # uses: ./.github/workflows/reusable.yml
-    runs-on: ubuntu-latest
-    steps:
-      - name: download artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: test-artifact
-          path: dist
-      - name: using reusable deploy
-        uses: ./.github/workflows/reusable.yml
+    needs: build
+    uses: ./.github/workflows/reusable.yml
+    with:
+      artifact-name: test-artifact
