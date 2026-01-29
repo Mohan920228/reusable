@@ -1,5 +1,5 @@
 name: deploy
-on: 
+on:
   workflow_call:
     inputs:
       artifacts-name:
@@ -17,6 +17,5 @@ jobs:
           name: ${{ inputs.artifacts-name }}
       - name: list files
         run: ls -l
-      - name: output information\
+      - name: output information
         run: echo "Deploying and uploading"
-
