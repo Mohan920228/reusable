@@ -39,4 +39,4 @@ jobs:
     needs: build
     uses: ./.github/workflows/reusable.yml
     with:
-      artifacts-name: test-artifact1
+      artifacts-name: test-artifact
