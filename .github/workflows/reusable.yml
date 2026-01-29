@@ -7,29 +7,27 @@ on:
         description: "Artifact name to deploy"
         required: true
         type: string
-        default: dist
     outputs:
-      print-out:
-        description: "print the output of job"
-        value: ${{ jobs.deploy.outputs.outcome }}
-        
+      printout:
+        description: "Deployment message"
+        value: ${{ jobs.deploy.outputs.print-out }}
 
 jobs:
   deploy:
-    outputs:
-      outcome: ${{ steps.set-out.outputs.set-result }}
     runs-on: ubuntu-latest
+    outputs:
+      print-out: ${{ steps.deploy-msg.outputs.message }}
+
     steps:
       - name: Download artifact
         uses: actions/download-artifact@v4
         with:
           name: ${{ inputs.artifacts-name }}
           path: dist
+
       - name: List files
         run: ls -l dist
 
-      - name: Output information
-        run: echo "Deploying and uploading..."
-      - name: print output
-        id: set-out
-        run: echo "set-result=success" >> $GITHUB_OUTPUT
+      - name: Deploy message
+        id: deploy-msg
+        run: echo "message=Deploy completed successfully" >> $GITHUB_OUTPUT
