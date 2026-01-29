@@ -1,9 +1,8 @@
-name: reusable-workflow
+name: deploy
 on: workflow_call
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: deploy workflow
-        run: |
-          echo "deploying and uploading artifact..."
+      - name: deploy job
+        run: echo "deploying...!"
