@@ -40,3 +40,9 @@ jobs:
     uses: ./.github/workflows/reusable.yml
     with:
       artifacts-name: test-artifact
+  print-output:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: print deploy output
+        run: ${{ needs.deploy.outputs.print-out }}
